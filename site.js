@@ -34,6 +34,16 @@
     });
   }
 
+  /* pack choice (product pages): saved with the sign-up so we know what each person wants at launch */
+  const packs = $$('.pack');
+  const pickPack = (p) => {
+    packs.forEach((q) => q.setAttribute('aria-checked', String(q === p)));
+    document.body.dataset.pack = p.dataset.pack;
+    const b = $('#barPack'); if (b) b.textContent = p.dataset.pack;
+  };
+  packs.forEach((p) => p.addEventListener('click', () => pickPack(p)));
+  if (packs.length) pickPack($('.pack[aria-checked="true"]') || packs[0]);
+
   /* phone sticky bar: appears once the first sign-up form has scrolled out of view */
   const bar = $('.bar'), first = $('.signup');
   if (bar && first && 'IntersectionObserver' in window) {
@@ -58,7 +68,7 @@
       const r = await fetch(SB_URL, {
         method: 'POST',
         headers: { apikey: SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-        body: JSON.stringify({ phone, consent: true, page: location.pathname.slice(0, 80), user_agent: navigator.userAgent.slice(0, 300) }),
+        body: JSON.stringify({ phone, consent: true, page: (location.pathname + (document.body.dataset.pack ? '#' + document.body.dataset.pack : '')).slice(0, 80), user_agent: navigator.userAgent.slice(0, 300) }),
       });
       if (r.status === 201) { f.classList.add('done'); msg.textContent = 'Done. We’ll WhatsApp you when TORQUE launches.'; }
       else if (r.status === 409) { f.classList.add('done'); msg.textContent = 'You’re already on the list. We’ll WhatsApp you at launch.'; }
