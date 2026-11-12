@@ -184,9 +184,37 @@ footer .note{margin-top:18px;font-size:12px;color:var(--bone2)}
 }
 @media (prefers-reduced-motion:reduce){.toast{transition:none}}
 
-/* ---- torquemen.com additions to the earlier product page (pre-launch: no prices, no cart) ---- */
-body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-.strip{display:block;text-decoration:none}
+/* ---- torquemen.com: the earlier product-page LAYOUT in the homepage (Sun) COLOURS (owner 11-12) ---- */
+:root{
+  --ink:#141b2d; --mist:#5a5040; --body:#3f3a30; --line:#e6dccb; --line2:#d9c7a8;
+  --ground:#e9dbc3; --band:#f1e6d4; --navy:#141d33; --bone:#ecebe6; --bone2:#b9c0d0;
+  --tan:#de7e3b; --tan-ink:#9a4a17; --deep:#0e1527; --paper:#fbf7f0; --sand3:#f9f3ea;
+}
+body{background:var(--paper);padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.strip{display:block;text-decoration:none;background:var(--tan);color:var(--ink);font-weight:700}
+.strip b{color:var(--ink)}
+header.site{background:var(--deep);border-bottom:0}
+header.site .icon-btn{color:#fff}
+header.site .mark{color:#fff}
+.menu{background:var(--deep)!important;border-top:1px solid rgba(236,235,230,.10)!important}
+.menu a{color:#fff;border-bottom-color:rgba(236,235,230,.08)!important}
+.menu a small{color:var(--bone2)!important}
+nav.main a{color:#fff}
+nav.main a:hover{color:#f0a46b!important}
+.pack{background:#fff}
+.pack[aria-checked="true"]{background:var(--sand3)}
+.active{background:var(--sand3)}
+.step.this{border-color:var(--ink)}
+.chip{background:#fff}
+.day{background:var(--navy)}
+.day .eyebrow{color:#f0a46b}
+footer.site{background:var(--deep)}
+footer .mark i{box-shadow:0 0 28px rgba(222,126,59,.55)}
+.bar-buy{background:var(--deep);border-top:1px solid rgba(236,235,230,.12)}
+.bar-buy .nm b{color:#fff}
+.bar-buy .nm span{color:var(--bone2)}
+.signup{background:var(--sand3)!important}
+.toast{background:#fff;color:var(--ink)}
 header.site .in{gap:8px}
 .lhs{display:flex;align-items:center;gap:2px}
 .hdr-cta{height:38px;padding:0 14px;font-size:14px;display:inline-flex;align-items:center;text-decoration:none}
